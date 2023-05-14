@@ -21,8 +21,10 @@ public class ExamPortalApplication implements CommandLineRunner {
         SpringApplication.run(ExamPortalApplication.class, args);
     }
 
+
     @Override
     public void run(String... args) throws Exception {
+        /*
         System.out.println("starting.");
         User user = new User();
         user.setFirstname("fisrtname");
@@ -44,5 +46,8 @@ public class ExamPortalApplication implements CommandLineRunner {
 
         User user1 = this.userService.createUser(user, userRoles);
         System.out.println(user1.getUsername());
+
+         */
     }
+
 }
