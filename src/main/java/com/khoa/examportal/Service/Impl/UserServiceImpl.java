@@ -6,6 +6,7 @@ import com.khoa.examportal.Service.UserService;
 import com.khoa.examportal.model.User;
 import com.khoa.examportal.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
