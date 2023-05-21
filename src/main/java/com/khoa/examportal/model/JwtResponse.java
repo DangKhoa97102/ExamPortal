@@ -3,7 +3,8 @@ package com.khoa.examportal.model;
 public class JwtResponse {
     String token;
 
-    public JwtResponse() {}
+    public JwtResponse() {
+    }
 
     public JwtResponse(String token) {
         this.token = token;

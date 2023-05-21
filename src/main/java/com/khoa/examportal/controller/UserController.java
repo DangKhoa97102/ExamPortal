@@ -1,13 +1,12 @@
 package com.khoa.examportal.controller;
 
-import com.khoa.examportal.Service.UserService;
+import com.khoa.examportal.service.UserService;
+import com.khoa.examportal.helper.UserFoundException;
 import com.khoa.examportal.model.Role;
 import com.khoa.examportal.model.User;
 import com.khoa.examportal.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
@@ -48,8 +47,8 @@ public class UserController {
         this.userService.deleteUser(userId);
     }
 
-    @ExceptionHandler(UsernameNotFoundException.class)
-    public ResponseEntity<?> exceptionHandler(UsernameNotFoundException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    @ExceptionHandler(UserFoundException.class)
+    public ResponseEntity<?> exceptionHandler(UserFoundException ex) {
+        return ResponseEntity.ok(ex.getMessage());
     }
 }

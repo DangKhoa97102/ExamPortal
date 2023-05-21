@@ -1,6 +1,6 @@
 package com.khoa.examportal.config;
 
-import com.khoa.examportal.Service.Impl.UserDetailsServiceImpl;
+import com.khoa.examportal.service.impl.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,30 +21,38 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
     private JwtAuthenticationEntryPoint unauthorizedHandler;
+
     @Autowired
     private JwtAuthenticationFilter jwtAuthenticationFilter;
+
+
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
+
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception {
+        return super.authenticationManagerBean();
+    }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 
-    @Bean
-    @Override
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
         auth.userDetailsService(this.userDetailsServiceImpl).passwordEncoder(passwordEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+
         http
                 .csrf()
                 .disable()
@@ -52,7 +60,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 .authorizeRequests()
                 .antMatchers("/generate-token", "/user/").permitAll()
-                .antMatchers(HttpMethod.POST).permitAll()
+                .antMatchers(HttpMethod.OPTIONS).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)

@@ -17,7 +17,8 @@ import java.util.Set;
 @Getter @Setter
 @AllArgsConstructor @NoArgsConstructor
 @Table(name = "users")
-public class User implements UserDetails {
+public class User implements UserDetails
+{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,12 +38,15 @@ public class User implements UserDetails {
 
     private boolean enabled = true;
 
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-       Set<Authority> authorities = new HashSet<>();
-       this.userRoles.forEach(userRole ->
-               authorities.add(new Authority(userRole.getRole().getRoleName())));
-       return authorities;
+        Set<Authority> set = new HashSet<>();
+        this.userRoles.forEach(userRole -> {
+            set.add(new Authority(userRole.getRole().getRoleName()));
+        });
+
+        return null;
     }
 
     @Override

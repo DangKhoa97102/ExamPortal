@@ -1,16 +1,10 @@
 package com.khoa.examportal;
 
-import com.khoa.examportal.Service.UserService;
-import com.khoa.examportal.model.Role;
-import com.khoa.examportal.model.User;
-import com.khoa.examportal.model.UserRole;
+import com.khoa.examportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import java.util.HashSet;
-import java.util.Set;
 
 @SpringBootApplication
 public class ExamPortalApplication implements CommandLineRunner {

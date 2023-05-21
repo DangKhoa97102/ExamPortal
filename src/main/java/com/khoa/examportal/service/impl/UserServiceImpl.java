@@ -1,12 +1,11 @@
-package com.khoa.examportal.Service.Impl;
+package com.khoa.examportal.service.impl;
 
 import com.khoa.examportal.Repository.RoleRepository;
 import com.khoa.examportal.Repository.UserRepository;
-import com.khoa.examportal.Service.UserService;
+import com.khoa.examportal.service.UserService;
 import com.khoa.examportal.model.User;
 import com.khoa.examportal.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;

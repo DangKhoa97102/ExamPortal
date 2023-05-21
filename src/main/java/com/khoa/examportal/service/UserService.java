@@ -1,4 +1,4 @@
-package com.khoa.examportal.Service;
+package com.khoa.examportal.service;
 
 import com.khoa.examportal.model.User;
 import com.khoa.examportal.model.UserRole;
