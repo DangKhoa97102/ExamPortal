@@ -23,16 +23,20 @@ public class UserController {
     @PostMapping("/")
     public User createUser(@RequestBody User user) throws Exception {
         user.setProfile("default.png");
+
         Set<UserRole> roles = new HashSet<>();
+
         Role role = new Role();
-        role.setRoleId(3L);
-        role.setRoleName("User");
+        role.setRoleId(1L);
+        role.setRoleName("Admin");
 
         UserRole userRole = new UserRole();
         userRole.setUser(user);
         userRole.setRole(role);
 
         roles.add(userRole);
+
+
         return this.userService.createUser(user, roles);
     }
 

@@ -46,7 +46,7 @@ public class User implements UserDetails
             set.add(new Authority(userRole.getRole().getRoleName()));
         });
 
-        return null;
+        return set;
     }
 
     @Override
