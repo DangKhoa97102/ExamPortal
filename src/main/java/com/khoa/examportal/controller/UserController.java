@@ -7,6 +7,7 @@ import com.khoa.examportal.model.User;
 import com.khoa.examportal.model.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
@@ -18,17 +19,19 @@ import java.util.Set;
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     //creating user
     @PostMapping("/")
     public User createUser(@RequestBody User user) throws Exception {
         user.setProfile("default.png");
-
+        user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
         Set<UserRole> roles = new HashSet<>();
 
         Role role = new Role();
-        role.setRoleId(1L);
-        role.setRoleName("Admin");
+        role.setRoleId(2L);
+        role.setRoleName("User");
 
         UserRole userRole = new UserRole();
         userRole.setUser(user);
